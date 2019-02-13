@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">发送数据</button>
+</body>
+</html>
+<script>
+    var ws = new WebSocket("ws://127.0.0.1:7777/ws");
+
+    ws.onopen = function () {
+        alert("ws already link")
+    };
+
+    ws.onmessage = function (evt) {
+        console.log("接受到message:")
+        console.log(evt.data)
+    };
+
+    var btnObj = document.getElementById("btn")
+    btnObj.onclick = function () {
+        ws.send("发送消息")
+    }
+</script>
